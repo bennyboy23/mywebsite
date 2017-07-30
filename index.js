@@ -7,7 +7,7 @@ router.use(function(req,res,next) {
     console.log("/" +req.method);
     next();
 });
-
+app.set('port', (process.env.PORT || 5000));
 router.get("/",function(req,res){
     res.sendFile(path + "index.html");
 });
@@ -26,6 +26,6 @@ app.use("*",function(req,res){
     res.sendFile(path + "404.html");
 });
 
-app.listen(3000,function(){
+app.listen(app.get("port"),function(){
     console.log('example app listening');
 });
